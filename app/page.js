@@ -102,12 +102,12 @@ export default function Home() {
         
         <div className="relative z-10 text-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
-            <span className="animated-gradient">L'art du kebab</span>
+            <span className="animated-gradient">L&apos;art du kebab</span>
             <br />
             <span className="text-white drop-shadow-lg">Réinventé</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8 max-w-2xl lg:max-w-3xl mx-auto drop-shadow-md">
-            Découvrez l'excellence culinaire turque dans un écrin moderne au cœur de Besançon
+            Découvrez l&apos;excellence culinaire turque dans un écrin moderne au cœur de Besançon
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-lg sm:max-w-none mx-auto">
             <a href="#menu" className="gold-gradient text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:scale-105 transition-transform shadow-lg inline-block text-center">
@@ -147,15 +147,15 @@ export default function Home() {
           
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
             <div>
-              <h3 className="text-3xl font-bold mb-6 text-gradient">L'Histoire du Chef</h3>
+              <h3 className="text-3xl font-bold mb-6 text-gradient">L&apos;Histoire du Chef</h3>
               <div className="space-y-4 text-lg text-foreground/80">
                 <p>
                   Né à Istanbul et formé dans les meilleures cuisines européennes, le Chef Mehmet a révolutionné 
-                  l'art du kebab en y apportant sa vision gastronomique.
+                  l&apos;art du kebab en y apportant sa vision gastronomique.
                 </p>
                 <p>
-                  Après 15 ans d'expérience dans des restaurants étoilés, il décide de sublimer les saveurs 
-                  de son enfance avec des techniques modernes et des ingrédients d'exception.
+                  Après 15 ans d&apos;expérience dans des restaurants étoilés, il décide de sublimer les saveurs 
+                  de son enfance avec des techniques modernes et des ingrédients d&apos;exception.
                 </p>
                 <p>
                   Chaque plat raconte une histoire, chaque bouchée est un voyage entre tradition et modernité.
@@ -211,7 +211,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Menu Signature</h2>
             <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
-              Nos créations exclusives, élaborées avec passion et des ingrédients d'exception
+              Nos créations exclusives, élaborées avec passion et des ingrédients d&apos;exception
             </p>
           </div>
 
@@ -303,8 +303,8 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-foreground/80 italic">
-                "Excellent kebab ! Les ingrédients sont frais et la présentation soignée. 
-                Un vrai régal, je recommande vivement !"
+                &ldquo;Excellent kebab ! Les ingrédients sont frais et la présentation soignée. 
+                Un vrai régal, je recommande vivement !&rdquo;
               </p>
               <p className="text-xs text-foreground/50 mt-3">Il y a 2 semaines</p>
             </div>
@@ -320,8 +320,8 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-foreground/80 italic">
-                "Enfin un kebab de qualité à Besançon ! L'accueil est chaleureux 
-                et les saveurs authentiques. Bravo !"
+                &ldquo;Enfin un kebab de qualité à Besançon ! L&apos;accueil est chaleureux 
+                et les saveurs authentiques. Bravo !&rdquo;
               </p>
               <p className="text-xs text-foreground/50 mt-3">Il y a 1 mois</p>
             </div>
@@ -337,8 +337,8 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-foreground/80 italic">
-                "Très bonne découverte ! Le cadre est moderne et propre. 
-                Les portions sont généreuses et savoureuses."
+                &ldquo;Très bonne découverte ! Le cadre est moderne et propre. 
+                Les portions sont généreuses et savoureuses.&rdquo;
               </p>
               <p className="text-xs text-foreground/50 mt-3">Il y a 3 semaines</p>
             </div>
@@ -364,7 +364,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Notre Ambiance</h2>
             <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
-              Un cadre élégant et chaleureux qui vous transporte au cœur de l'hospitalité turque
+              Un cadre élégant et chaleureux qui vous transporte au cœur de l&apos;hospitalité turque
             </p>
           </div>
           
@@ -478,7 +478,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="text-2xl font-bold text-gradient mb-4">Le Sultan</div>
-            <p className="text-white/70 mb-4">L'art du kebab réinventé • Besançon</p>
+            <p className="text-white/70 mb-4">L&apos;art du kebab réinventé • Besançon</p>
             <div className="flex justify-center space-x-6 text-sm text-white/60">
               <a href="#" className="hover:text-gold transition-colors">Mentions légales</a>
               <a href="#" className="hover:text-gold transition-colors">Politique de confidentialité</a>

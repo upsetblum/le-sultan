@@ -32,7 +32,7 @@ export default function Home() {
       badges: ["Bio", "Halal"]
     },
     {
-      name: "L'Ottoman",
+      name: "L&apos;Ottoman",
       description: "Agneau de Lozère aux épices d'Anatolie, yaourt grec aux herbes fraîches, pain pide artisanal",
       price: "18€",
       image: "/IMG_9388.JPG",
@@ -285,7 +285,7 @@ export default function Home() {
                 allowFullScreen={true}
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Sultan's Kebab Berliner - Localisation Google Maps"
+                title="Sultan&apos;s Kebab Berliner - Localisation Google Maps"
               />
             </div>
           </div>
@@ -346,7 +346,7 @@ export default function Home() {
 
           <div className="text-center mt-12">
             <a 
-              href="https://www.google.com/maps/place/Sultan's+Kebab+Berliner/@47.2477,6.0389,17z" 
+              href="https://www.google.com/maps/place/Sultan&apos;s+Kebab+Berliner/@47.2477,6.0389,17z" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors shadow-lg"

@@ -14,6 +14,11 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Le Sultan - L'art du kebab Réinventé | Fast Food Haut de Gamme Besançon",
   description: "Découvrez Le Sultan, restaurant turc haut de gamme à Besançon. L'art du kebab réinventé avec des ingrédients premium et des techniques innovantes.",
+  icons: {
+    icon: '/sultan-logo.svg',
+    shortcut: '/sultan-logo.svg',
+    apple: '/sultan-logo.svg',
+  },
 };
 
 export default function RootLayout({ children }) {

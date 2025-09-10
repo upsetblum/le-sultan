@@ -3,6 +3,115 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
+// Composant MenuGallery
+function MenuGallery() {
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const menuCategories = [
+    { id: 'all', name: 'Toute la carte', image: null },
+    { id: 'kebabs', name: 'Kebabs & Berliner', image: '/menu/kebabs-berliner.png', description: 'Nos spécialités kebab et berliner' },
+    { id: 'lahmacuns', name: 'Lahmacuns & Tacos', image: '/menu/lahmacuns-tacos.png', description: 'Pains à la viande turcs et tacos' },
+    { id: 'poutines', name: 'Poutines & Bowls', image: '/menu/poutines-bowls.png', description: 'Nos créations fusion et bowls' },
+    { id: 'kids', name: 'Menu Enfant & Desserts', image: '/menu/kids-desserts.png', description: 'Pour les plus petits et les gourmands' }
+  ];
+
+  const filteredCategories = activeCategory === 'all' 
+    ? menuCategories.filter(cat => cat.image) 
+    : menuCategories.filter(cat => cat.id === activeCategory);
+
+  return (
+    <>
+      {/* Navigation des catégories */}
+      <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {menuCategories.map((category) => (
+          <button
+            key={category.id}
+            onClick={() => setActiveCategory(category.id)}
+            className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+              activeCategory === category.id
+                ? 'gold-gradient text-white shadow-lg'
+                : 'bg-white text-foreground border-2 border-gold/20 hover:border-gold hover:text-gold'
+            }`}
+          >
+            {category.name}
+          </button>
+        ))}
+      </div>
+
+      {/* Galerie d'images */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        {filteredCategories.map((category) => (
+          <div
+            key={category.id}
+            className="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer"
+            onClick={() => setSelectedImage(category)}
+          >
+            <div className="relative h-80 overflow-hidden">
+              <Image
+                src={category.image}
+                alt={category.name}
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="text-center text-white">
+                  <div className="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🔍</span>
+                  </div>
+                  <p className="text-lg font-semibold">Voir en détail</p>
+                </div>
+              </div>
+            </div>
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-gold transition-colors">
+                {category.name}
+              </h3>
+              <p className="text-foreground/70">
+                {category.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Modal plein écran */}
+      {selectedImage && (
+        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={() => setSelectedImage(null)}>
+          <div className="relative max-w-6xl max-h-full" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute -top-12 right-0 text-white hover:text-gold text-2xl font-bold z-10"
+            >
+              ✕ Fermer
+            </button>
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute -top-12 left-0 text-white hover:text-gold text-2xl font-bold z-10 flex items-center gap-2"
+            >
+              ← Retour
+            </button>
+            <div className="relative w-full h-full">
+              <Image
+                src={selectedImage.image}
+                alt={selectedImage.name}
+                width={1200}
+                height={800}
+                className="max-w-full max-h-[90vh] object-contain rounded-lg"
+              />
+            </div>
+            <div className="text-center mt-4">
+              <h3 className="text-2xl font-bold text-white mb-2">{selectedImage.name}</h3>
+              <p className="text-white/80">{selectedImage.description}</p>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const heroImages = [
@@ -60,7 +169,16 @@ export default function Home() {
       <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gold/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="font-bold text-2xl text-gradient">Le Sultan Berliner</div>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/sultan-logo.svg"
+                alt="Sultan Logo"
+                width={40}
+                height={40}
+                className="w-10 h-10"
+              />
+              <div className="font-bold text-2xl text-gradient">Le Sultan Berliner</div>
+            </div>
             <div className="hidden md:flex space-x-6 lg:space-x-8">
               <a href="#concept" className="text-foreground hover:text-gold transition-colors text-sm lg:text-base">Notre Concept</a>
               <a href="#menu" className="text-foreground hover:text-gold transition-colors text-sm lg:text-base">Menu</a>
@@ -209,48 +327,59 @@ export default function Home() {
       <section id="menu" className="py-20 bg-foreground/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Menu Signature</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Notre Carte Complète</h2>
             <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
-              Nos créations exclusives, élaborées avec passion et des ingrédients d&apos;exception
+              Découvrez toute notre carte avec nos spécialités authentiques et créations originales
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
-            {menuItems.map((item, index) => (
-              <div key={index} className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-                <div className="relative h-64 overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-gold text-white px-3 py-1 rounded-full font-bold text-lg">
-                      {item.price}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-4 left-4 flex gap-2">
-                    {item.badges.map((badge, badgeIndex) => (
-                      <span key={badgeIndex} className="bg-green text-white px-3 py-1 rounded-full text-sm font-medium">
-                        {badge}
+          <MenuGallery />
+
+          <div className="mt-20">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Menu Signature</h3>
+              <p className="text-lg text-foreground/70">
+                Nos créations exclusives du chef
+              </p>
+            </div>
+            
+            <div className="grid lg:grid-cols-2 gap-8">
+              {menuItems.map((item, index) => (
+                <div key={index} className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+                  <div className="relative h-64 overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <span className="bg-gold text-white px-3 py-1 rounded-full font-bold text-lg">
+                        {item.price}
                       </span>
-                    ))}
+                    </div>
+                    <div className="absolute bottom-4 left-4 flex gap-2">
+                      {item.badges.map((badge, badgeIndex) => (
+                        <span key={badgeIndex} className="bg-green text-white px-3 py-1 rounded-full text-sm font-medium">
+                          {badge}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-gold transition-colors">
+                      {item.name}
+                    </h3>
+                    <p className="text-foreground/70 leading-relaxed">
+                      {item.description}
+                    </p>
+                    <button className="mt-4 text-gold hover:text-gold-dark font-semibold transition-colors">
+                      En savoir plus →
+                    </button>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-gold transition-colors">
-                    {item.name}
-                  </h3>
-                  <p className="text-foreground/70 leading-relaxed">
-                    {item.description}
-                  </p>
-                  <button className="mt-4 text-gold hover:text-gold-dark font-semibold transition-colors">
-                    En savoir plus →
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -477,7 +606,16 @@ export default function Home() {
       <footer className="bg-foreground/90 text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="text-2xl font-bold text-gradient mb-4">Le Sultan</div>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Image
+                src="/sultan-logo.svg"
+                alt="Sultan Logo"
+                width={32}
+                height={32}
+                className="w-8 h-8"
+              />
+              <div className="text-2xl font-bold text-gradient">Le Sultan</div>
+            </div>
             <p className="text-white/70 mb-4">L&apos;art du kebab réinventé • Besançon</p>
             <div className="flex justify-center space-x-6 text-sm text-white/60">
               <a href="#" className="hover:text-gold transition-colors">Mentions légales</a>

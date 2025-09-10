@@ -327,9 +327,9 @@ export default function Home() {
       <section id="menu" className="py-20 bg-foreground/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Notre Carte Complète</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Notre Ambiance</h2>
             <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
-              Découvrez toute notre carte avec nos spécialités authentiques et créations originales
+              Découvrez l'intérieur avec une décoration moderne et folKlore 
             </p>
           </div>
 
@@ -337,9 +337,9 @@ export default function Home() {
 
           <div className="mt-20">
             <div className="text-center mb-12">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Menu Signature</h3>
+              <h3 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Fresque Murale</h3>
               <p className="text-lg text-foreground/70">
-                Nos créations exclusives du chef
+                Une création exclusive à l&apos;image du chef et de notre héritage turc
               </p>
             </div>
             
@@ -349,33 +349,18 @@ export default function Home() {
                   <div className="relative h-64 overflow-hidden">
                     <Image
                       src={item.image}
-                      alt={item.name}
+                      alt={`Décoration intérieure ${index + 1}`}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-300"
                     />
-                    <div className="absolute top-4 right-4">
-                      <span className="bg-gold text-white px-3 py-1 rounded-full font-bold text-lg">
-                        {item.price}
-                      </span>
-                    </div>
-                    <div className="absolute bottom-4 left-4 flex gap-2">
-                      {item.badges.map((badge, badgeIndex) => (
-                        <span key={badgeIndex} className="bg-green text-white px-3 py-1 rounded-full text-sm font-medium">
-                          {badge}
-                        </span>
-                      ))}
-                    </div>
                   </div>
                   <div className="p-6">
                     <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-gold transition-colors">
-                      {item.name}
+                      Art Mural Traditionnel
                     </h3>
                     <p className="text-foreground/70 leading-relaxed">
-                      {item.description}
+                      Découvrez notre décoration authentique qui marie modernité et traditions ottomanes
                     </p>
-                    <button className="mt-4 text-gold hover:text-gold-dark font-semibold transition-colors">
-                      En savoir plus →
-                    </button>
                   </div>
                 </div>
               ))}
@@ -396,7 +381,7 @@ export default function Home() {
                 ))}
               </div>
               <span className="text-xl font-semibold text-foreground ml-2">4.8/5</span>
-              <span className="text-foreground/60">(127 avis)</span>
+              <span className="text-foreground/60">(17 avis)</span>
             </div>
             <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
               Découvrez ce que nos clients pensent de leur expérience au Sultan

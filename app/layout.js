@@ -15,9 +15,9 @@ export const metadata = {
   title: "Le Sultan - L'art du kebab Réinventé | Fast Food Haut de Gamme Besançon",
   description: "Découvrez Le Sultan, restaurant turc haut de gamme à Besançon. L'art du kebab réinventé avec des ingrédients premium et des techniques innovantes.",
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/sultan-logo.svg',
+    icon: '/sultan-logo.JPG',
+    shortcut: '/sultan-logo.JPG',
+    apple: '/sultan-logo.JPG',
   },
 };
 

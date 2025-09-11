@@ -3,6 +3,71 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
+// Composant DeliveryDropdown
+function DeliveryDropdown({ className = "", variant = "primary" }) {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const deliveryOptions = [
+    {
+      name: "Uber Eats",
+      url: "https://www.ubereats.com/fr/store/sultans-kebab-berliner/MFT1hmciQBqcWKYKDloiHg?srsltid=AfmBOopFGZ9i0LEwz4O8Vlzp5D716vGHmCtd53lzyzfIdMcY1141QwBg",
+      icon: "🚗",
+      color: "bg-black"
+    },
+    {
+      name: "Deliveroo",
+      url: "https://deliveroo.fr/fr/menu/besancon/besancon-centre-ville/sultans-kebab-berliner",
+      icon: "🛵", 
+      color: "bg-teal-500"
+    }
+  ];
+
+  const baseClasses = "relative inline-block";
+  const buttonVariants = {
+    primary: "bg-red text-white px-4 sm:px-6 py-2 rounded-full hover:bg-red-dark transition-colors font-medium text-sm sm:text-base",
+    hero: "gold-gradient text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:scale-105 transition-transform shadow-lg",
+    contact: "border-2 border-gold text-gold px-8 py-4 rounded-full font-semibold hover:bg-gold hover:text-white transition-colors"
+  };
+
+  return (
+    <div className={`${baseClasses} ${className}`}>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className={`${buttonVariants[variant]} flex items-center gap-2`}
+      >
+        Commander
+        <span className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}>
+          ▼
+        </span>
+      </button>
+      
+      {isOpen && (
+        <>
+          <div 
+            className="fixed inset-0 z-40" 
+            onClick={() => setIsOpen(false)}
+          />
+          <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+            {deliveryOptions.map((option, index) => (
+              <a
+                key={index}
+                href={option.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                <span className="text-xl">{option.icon}</span>
+                <span className="font-medium text-gray-900">{option.name}</span>
+              </a>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 // Composant MenuGallery
 function MenuGallery() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -179,6 +244,7 @@ export default function Home() {
   const links = {
     uberEats:
       "https://www.ubereats.com/fr/store/sultans-kebab-berliner/MFT1hmciQBqcWKYKDloiHg?srsltid=AfmBOopFGZ9i0LEwz4O8Vlzp5D716vGHmCtd53lzyzfIdMcY1141QwBg",
+    deliveroo: "https://deliveroo.fr/fr/menu/besancon/besancon-centre-ville/sultans-kebab-berliner",
     reserver: "tel:+33381533585", // Numéro de téléphone pour réservation
   };
 
@@ -240,11 +306,11 @@ export default function Home() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
               <Image
-                src="/sultan-logo.svg"
+                src="/sultan-logo.JPG"
                 alt="Sultan Logo"
                 width={40}
                 height={40}
-                className="w-10 h-10"
+                className="w-10 h-10 rounded-full"
               />
               <div className="font-bold text-2xl text-gradient">
                 Le Sultan Berliner
@@ -270,14 +336,7 @@ export default function Home() {
                 Contact
               </a>
             </div>
-            <a
-              href={links.uberEats}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-red text-white px-4 sm:px-6 py-2 rounded-full hover:bg-red-dark transition-colors font-medium text-sm sm:text-base inline-block"
-            >
-              Commander
-            </a>
+            <DeliveryDropdown variant="primary" />
           </div>
         </div>
       </nav>
@@ -317,14 +376,7 @@ export default function Home() {
             au cœur de Besançon
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-lg sm:max-w-none mx-auto">
-            <a
-              href={links.uberEats}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="gold-gradient text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:scale-105 transition-transform shadow-lg inline-block text-center"
-            >
-              Commander en ligne
-            </a>
+            <DeliveryDropdown variant="hero" className="text-center" />
             <a
               href="#menu"
               className="border-2 border-gold text-gold bg-white/10 backdrop-blur-sm px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-gold hover:text-white transition-colors inline-block text-center"
@@ -702,14 +754,7 @@ export default function Home() {
                 >
                   Réserver maintenant
                 </a>
-                <a
-                  href={links.uberEats}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border-2 border-gold text-gold px-8 py-4 rounded-full font-semibold hover:bg-gold hover:text-white transition-colors inline-block text-center"
-                >
-                  Commander en ligne
-                </a>
+                <DeliveryDropdown variant="contact" />
               </div>
             </div>
 
@@ -731,11 +776,11 @@ export default function Home() {
           <div className="text-center">
             <div className="flex items-center justify-center gap-3 mb-4">
               <Image
-                src="/sultan-logo.svg"
+                src="/sultan-logo.JPG"
                 alt="Sultan Logo"
                 width={32}
                 height={32}
-                className="w-8 h-8"
+                className="w-8 h-8 rounded-full"
               />
               <div className="text-2xl font-bold text-gradient">Le Sultan</div>
             </div>

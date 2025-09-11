@@ -26,17 +26,17 @@ export const metadata = {
   openGraph: {
     title: "Le Sultan - L'art du kebab Réinventé",
     description: "Restaurant turc haut de gamme à Besançon. Kebab premium avec ingrédients d'exception et techniques innovantes. Commandez sur Uber Eats et Deliveroo.",
-    url: 'https://le-sultan.vercel.app',
+    url: 'https://lesultanberliner.vercel.app',
     siteName: 'Le Sultan Berliner',
     images: [
       {
-        url: '/IMG_9392.JPG',
+        url: 'https://lesultanberliner.vercel.app/IMG_9392.JPG',
         width: 1200,
         height: 630,
         alt: 'Le Sultan - Restaurant turc premium à Besançon',
       },
       {
-        url: '/sultan-logo.JPG',
+        url: 'https://lesultanberliner.vercel.app/sultan-logo.JPG',
         width: 400,
         height: 400,
         alt: 'Le Sultan Logo',
@@ -49,7 +49,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: "Le Sultan - L'art du kebab Réinventé",
     description: "Restaurant turc haut de gamme à Besançon. Kebab premium avec ingrédients d'exception. Commandez maintenant !",
-    images: ['/IMG_9392.JPG'],
+    images: ['https://lesultanberliner.vercel.app/IMG_9392.JPG'],
     creator: '@lesultan',
     site: '@lesultan',
   },
